@@ -1,6 +1,6 @@
-==================================================================================================
 
 DESCRIPTION:
+<hr>
 
 DAZZLE is a modern and beautiful well crafted responsive template created for showcasing 
 your software and mobile application. Built with clean and organized css3 and html5 code, 
@@ -9,13 +9,11 @@ means it will look great on any devices from mobile to desktop, sharp and crisp 
 resolutions and displays. This stylish template is perfect for showcasing your software and mobile 
 application.
 
-==================================================================================================
-
+<hr>
 
 LICENSE:
 
-This free resource is provided by Styleshout.com and is free to use in 
-both personal and commercial projects.
+This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
 
 Rights:
@@ -24,7 +22,7 @@ Rights:
 You are permitted to use this free resource in any number of personal and commercial projects for 
 yourself or a client. You may modify the resource according to your requirements and include them 
 in your projects under the following condition - you MUST give appropriate credit, provide an 
-attribution link to styleshout.com.
+attribution link to Pro-Bandey.
 
 
 Prohibitions:
