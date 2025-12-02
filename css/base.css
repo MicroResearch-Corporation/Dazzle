@@ -892,5 +892,23 @@ textarea {
   text-align: center;
 }
 
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #39b54a;
+  border-radius: 4px;
+  cursor: grab;
+}
+::-webkit-scrollbar-thumb:active {
+  cursor: grabbing;
+}
+
 
 /*# sourceMappingURL=base.css.map */
