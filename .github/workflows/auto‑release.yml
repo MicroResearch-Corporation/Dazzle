@@ -124,13 +124,14 @@ jobs:
       # -------------------------------------------------
       # 7. Zip package
       # -------------------------------------------------
-
       - name: Create ZIP
-      if: |
-        steps.decide.outputs.release == 'true' &&
-        steps.tagcheck.outputs.exists == 'false'
-      run: |
-        zip -qr release.zip release
+        if: |
+          steps.decide.outputs.release == 'true' &&
+          steps.tagcheck.outputs.exists == 'false'
+        run: |
+          ZIP="release_${DATE}.zip"
+          zip -qr "$ZIP" release
+          echo "ZIP=$ZIP" >> $GITHUB_ENV
 
       # -------------------------------------------------
       # 8. Build final release notes
@@ -157,25 +158,19 @@ jobs:
           echo "NOTES<<EOF" >> $GITHUB_ENV
           cat notes.txt >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
-          
-          
-          - name: Debug ZIP
-          run: |
-          ls -lh
 
       # -------------------------------------------------
       # 9. Publish GitHub release
       # -------------------------------------------------
       - name: Publish release
-      if: |
-        steps.decide.outputs.release == 'true' &&
-        steps.tagcheck.outputs.exists == 'false'
-      uses: ncipollo/release-action@v1
-      with:
-      tag: Dazzle-v${{ env.DATE }}
-      name: Dazzle-${{ env.RELEASE_NAME || format('v{0}', env.DATE) }}
-      body: ${{ env.NOTES }}
-      files: release.zip
-      draft: false
-      prerelease: false
-
+        if: |
+          steps.decide.outputs.release == 'true' &&
+          steps.tagcheck.outputs.exists == 'false'
+        uses: ncipollo/release-action@v1
+        with:
+          tag: Dazzle-v${{ env.DATE }}
+          name: Dazzle-v${{ env.DATE }}
+          body: ${{ env.NOTES }}
+          files: ${{ env.ZIP }}
+          draft: false
+          prerelease: false
