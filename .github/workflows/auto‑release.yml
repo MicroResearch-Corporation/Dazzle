@@ -124,12 +124,14 @@ jobs:
       # -------------------------------------------------
       # 7. Zip package
       # -------------------------------------------------
+
       - name: Create ZIP
       if: |
         steps.decide.outputs.release == 'true' &&
         steps.tagcheck.outputs.exists == 'false'
       run: |
         zip -qr release.zip release
+
       # -------------------------------------------------
       # 8. Build final release notes
       # -------------------------------------------------
@@ -166,12 +168,12 @@ jobs:
       # -------------------------------------------------
       - name: Publish release
       if: |
-      steps.decide.outputs.release == 'true' &&
-      steps.tagcheck.outputs.exists == 'false'
+        steps.decide.outputs.release == 'true' &&
+        steps.tagcheck.outputs.exists == 'false'
       uses: ncipollo/release-action@v1
       with:
-      tag: v${{ env.DATE }}
-      name: ${{ env.RELEASE_NAME || format('v{0}', env.DATE) }}
+      tag: Dazzle-v${{ env.DATE }}
+      name: Dazzle-${{ env.RELEASE_NAME || format('v{0}', env.DATE) }}
       body: ${{ env.NOTES }}
       files: release.zip
       draft: false
